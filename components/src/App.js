@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import faker from "faker";
+import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="ui container comments">
+      <ApprovalCard>
+        <div>
+          <h4>Are you sure you want to do this?</h4>
+        </div>
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Sam"
+          comment="Nice blog post!"
+          timeAgo="Today at 4:45PM"
+        />
+      </ApprovalCard>
+
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Alex"
+          comment="I like the subject"
+          timeAgo="Today at 2:00AM"
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Jane"
+          comment="I like the writing"
+          timeAgo="Yesterday at 5:00PM"
+        />
+      </ApprovalCard>
+    </div>
+  );
+};
 
 export default App;
