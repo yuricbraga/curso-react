@@ -1,5 +1,6 @@
 import React from "react";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,8 +23,7 @@ class App extends React.Component {
     );
   }
 
-  // React says we have to define render!!
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -32,7 +32,12 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
 
-    return <div>Loading!</div>;
+    return <Spinner message="Please accept location request" />;
+  }
+
+  // React says we have to define render!!
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
